@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FARM RADIO Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="stage" aria-label="FARM RADIO mobile app prototype">
+      <section class="phone-shell">
+        <div class="status-bar">
+          <span>09:41</span>
+          <span>5G  82%</span>
+        </div>
+
+        <section id="registration" class="screen screen-active">
+          <div class="brand-panel">
+            <div class="sun-mark" aria-hidden="true"></div>
+            <h1>FARM RADIO</h1>
+            <p class="eyebrow">South Africa’s first and only radio station for farming</p>
+            <p class="tagline">The voice of South African agriculture.</p>
+          </div>
+
+          <form class="signup-form" id="signupForm">
+            <label>
+              Full name
+              <input name="name" type="text" value="Gerben van Niekerk" autocomplete="name">
+            </label>
+            <label>
+              Mobile number
+              <input name="phone" type="tel" value="+27 72 555 0183" autocomplete="tel">
+            </label>
+            <label>
+              Province
+              <select name="province">
+                <option>KwaZulu-Natal</option>
+                <option>Eastern Cape</option>
+                <option>Free State</option>
+                <option>Gauteng</option>
+                <option>Limpopo</option>
+                <option>Mpumalanga</option>
+                <option>Northern Cape</option>
+                <option>North West</option>
+                <option>Western Cape</option>
+              </select>
+            </label>
+            <label>
+              Farming sector
+              <select name="sector">
+                <option>Livestock</option>
+                <option>Grain</option>
+                <option>Dairy</option>
+                <option>Citrus</option>
+                <option>Wine</option>
+                <option>Poultry</option>
+                <option>Mixed farming</option>
+              </select>
+            </label>
+
+            <div class="consent-box">
+              <label class="check-row">
+                <input type="checkbox" checked>
+                <span>Receive weather, market and breaking news alerts</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" checked>
+                <span>Opt in to vouchers, coupons and partner offers</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" checked>
+                <span>I accept POPIA consent, privacy policy and terms</span>
+              </label>
+            </div>
+
+            <button class="primary-action" type="submit">Enter FARM RADIO</button>
+          </form>
+        </section>
+
+        <section id="app" class="screen">
+          <header class="app-header">
+            <div>
+              <p class="eyebrow">Live from Johannesburg</p>
+              <h2>FARM RADIO</h2>
+            </div>
+            <button class="icon-button" id="profileButton" aria-label="Open profile">MG</button>
+          </header>
+
+          <nav class="quick-tabs" aria-label="Main sections">
+            <button class="tab-button active" data-view="home">Live</button>
+            <button class="tab-button" data-view="news">News</button>
+            <button class="tab-button" data-view="markets">Markets</button>
+            <button class="tab-button" data-view="community">Community</button>
+          </nav>
+
+          <div class="content-scroll">
+            <section class="view active" data-view-panel="home">
+              <article class="live-card">
+                <div class="field-photo" aria-hidden="true">
+                  <div class="broadcast-ring"></div>
+                </div>
+                <div class="live-copy">
+                  <p class="live-chip">Playing live now</p>
+                  <h3>Morning Market Report</h3>
+                  <p>With Pieter Moller and the Grain SA desk</p>
+                </div>
+                <button class="play-button" id="playButton" aria-label="Play live radio">
+                  <span id="playIcon">▶</span>
+                </button>
+                <audio id="liveAudio" preload="auto">
+                  <source src="assets/farm-radio-live.mp3" type="audio/mpeg">
+                </audio>
+              </article>
+              <p class="audio-status" id="audioStatus">Tap play to hear the FARM RADIO promo stream.</p>
+
+              <section class="video-panel home-video">
+                <div class="video-frame">
+                  <span>WATCH LIVE</span>
+                </div>
+                <h3>Watch FARM RADIO live</h3>
+                <p>Live video from the studio, field visits and special broadcasts.</p>
+              </section>
+
+              <section class="now-grid">
+                <article>
+                  <span>Weather</span>
+                  <strong>27°C</strong>
+                  <p>Light wind, rain risk after 17:00</p>
+                </article>
+                <article>
+                  <span>Maize</span>
+                  <strong>R4 218/t</strong>
+                  <p>SAFEX yellow maize +1.8%</p>
+                </article>
+              </section>
+
+              <section class="section-block">
+                <div class="section-title">
+                  <h3>Recently played</h3>
+                  <button class="text-button">View all</button>
+                </div>
+                <div class="playlist">
+                  <p><strong>05:48</strong> AgriTech Africa interview</p>
+                  <p><strong>05:32</strong> Beef price bulletin</p>
+                  <p><strong>05:16</strong> Local co-op notice board</p>
+                </div>
+              </section>
+
+              <section class="ad-slot">
+                <span>Advertiser banner</span>
+                <strong>Seed partner campaign placement</strong>
+              </section>
+
+              <section class="section-block">
+                <div class="section-title">
+                  <h3>On demand</h3>
+                  <button class="text-button">Podcasts</button>
+                </div>
+                <div class="media-list" id="podcastList"></div>
+              </section>
+            </section>
+
+            <section class="view" data-view-panel="news">
+              <section class="filter-row" aria-label="Province filters">
+                <button class="filter active">All SA</button>
+                <button class="filter">KZN</button>
+                <button class="filter">Free State</button>
+                <button class="filter">Western Cape</button>
+              </section>
+              <div class="feature-story">
+                <p class="eyebrow">Breaking agri news</p>
+                <h3>Rainfall window opens for summer grain regions</h3>
+                <p>Provincial updates, expert audio and weather alerts are bundled for low-bandwidth reading.</p>
+              </div>
+              <div class="news-list" id="newsList"></div>
+            </section>
+
+            <section class="view" data-view-panel="markets">
+              <section class="market-hero">
+                <p class="eyebrow">Commodity board</p>
+                <h3>Live prices and watchlists</h3>
+                <p>Local and global market indicators for farmers and advertisers.</p>
+              </section>
+              <div class="market-list" id="marketList"></div>
+              <section class="voucher-card">
+                <div>
+                  <p class="eyebrow">Vouchers</p>
+                  <h3>R250 off livestock feed</h3>
+                  <p>Sponsored coupon ready for opt-in subscribers.</p>
+                </div>
+                <button class="secondary-action">Save</button>
+              </section>
+            </section>
+
+            <section class="view" data-view-panel="community">
+              <section class="community-actions">
+                <button class="action-tile" data-toast="Text message queued for the studio">
+                  <span>Text</span>
+                  Leave a message
+                </button>
+                <button class="action-tile" data-toast="Voice recorder opened">
+                  <span>Voice</span>
+                  Record for broadcast
+                </button>
+                <button class="action-tile highlight" data-toast="GET ON THE FARM request sent">
+                  <span>Live</span>
+                  Join on air
+                </button>
+              </section>
+
+              <section class="section-block">
+                <div class="section-title">
+                  <h3>Meet local farmers</h3>
+                  <button class="text-button">Subscribe</button>
+                </div>
+                <div class="farmer-list">
+                  <article>
+                    <strong>Nandi Dlamini</strong>
+                    <span>Dairy • 8 km away</span>
+                  </article>
+                  <article>
+                    <strong>Pieter van Zyl</strong>
+                    <span>Grain • 21 km away</span>
+                  </article>
+                  <article>
+                    <strong>Aisha Khan</strong>
+                    <span>Mixed farming • 34 km away</span>
+                  </article>
+                </div>
+              </section>
+
+              <section class="social-strip">
+                <button>Website</button>
+                <button>Facebook</button>
+                <button>Instagram</button>
+              </section>
+            </section>
+          </div>
+
+          <footer class="bottom-nav" aria-label="App shortcuts">
+            <button data-jump="home">Live</button>
+            <button data-jump="news">Alerts</button>
+            <button data-jump="markets">Prices</button>
+            <button data-jump="community">Studio</button>
+          </footer>
+        </section>
+
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </section>
+
+      <aside class="prototype-notes" aria-label="Prototype scope">
+        <p class="eyebrow">Prototype v0.1</p>
+        <h2>Mobile app concept</h2>
+        <p>This clickable prototype establishes the core FARM RADIO experience: registered users, live stream, on-demand media, news, weather, commodities, vouchers, video and community participation.</p>
+        <ul>
+          <li>Built as static web files for fast review.</li>
+          <li>Designed mobile-first for App Store and Google Play planning.</li>
+          <li>Ready to evolve into React Native, Flutter or a native build.</li>
+        </ul>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
